@@ -3,55 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Media</title>
+    <title>Wedding Invitation</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f8f8;
+        }
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
         }
         video {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
-            object-fit: contain;
+            width: 95vw;
+            height: 95vh;
+            object-fit: cover;
             transform: translate(-50%, -50%);
-        }
-        .unmute-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
             z-index: 1;
         }
-        @media (orientation: landscape) {
+        .content {
+            padding: 20px;
+            background: white;
+            z-index: 0;
+            position: relative;
+            text-align: center;
+        }
+        .image {
+            width: 100%;
+            height: auto;
+        }
+        .text {
+            margin-top: 20px;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #a0522d;
+        }
+        p {
+            font-size: 1em;
+            color: #333;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 10px;
+            }
+            .text {
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 480px) {
             video {
-                width: 100vw;
-                height: 100vh;
+                object-fit: cover;
+            }
+            .content {
+                padding: 5px;
+            }
+            .text {
+                font-size: 12px;
+            }
+            h1 {
+                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
-    <button class="unmute-button" onclick="unmuteVideo()">Unmute</button>
-    <video id="bgVideo" autoplay loop muted playsinline>
-        <source src="media/haneershaweds.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+        <video id="bgVideo" autoplay loop playsinline>
+            <source src="media/haneershaweds.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="content">
+        <a href="https://maps.app.goo.gl/dioiXeQsybB5WTyW7">
+            <img src="media/weddingloc.png" alt="Wedding Location Map" class="image">
+        </a>
+        <div class="text">
+            <h1>Wedding Invitation</h1>
+            <p>In the name of Allah, Most Gracious & Most Merciful<br>
+               Mr. Kari Haneefa & Mrs. Sara Pandikasala <br>
+               Harsha Villa, Manoor -Pookkunnu, Othukkungal Malappuram, Mob: 9497 348598 <br>
+               We cordially invite your esteemed presence with family on the auspicious occasion of the marriage of our son <br>
+               <strong>Haneersha</strong> <br>
+               (Grand S/o Mr. Alavi Haji & Mrs. Fathima and Ávarankutty Haji Pandikasala (Late) & Fathima (Late)) <br>
+               with <br>
+               <strong>Wi/D/o Mr. Sameer & Mrs. Rajeena</strong>, Moozhikkal House Mambaramba, PO Patterkadavu, Malappuram <br>
+               Sunday, 11 August 2024 <br>
+               Location: Green Palace Auditorium, Manoor Pookkunnu, Othukkungal <br>
+               With best compliments from: Harsha, Rabid, Hafeersha & Hafrasha <br>
+               Between 11:30 am & 2:00 pm
+            </p>
+        </div>
+    </div>
 
     <script>
-        function unmuteVideo() {
+        document.addEventListener('DOMContentLoaded', function() {
             var video = document.getElementById('bgVideo');
             video.muted = false;
-            video.play();
-        }
+            video.play().catch(function(error) {
+                console.error('Autoplay failed: ', error);
+                video.muted = true;
+                video.play();
+            });
+
+            function enableAutoplay() {
+                video.muted = false;
+                video.play().catch(function() {
+                    console.log('Autoplay failed');
+                });
+                document.removeEventListener('touchstart', enableAutoplay);
+                document.removeEventListener('click', enableAutoplay);
+            }
+
+            document.addEventListener('touchstart', enableAutoplay);
+            document.addEventListener('click', enableAutoplay);
+        });
     </script>
 </body>
 </html>
