@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
@@ -48,14 +49,10 @@
         .text {
             margin-top: 20px;
         }
-        .heading-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .heading-container img {
-            height: 3em; /* Adjust the height to make the logo more prominent */
-            margin-right: 10px; /* Space between image and heading */
+        img {
+            height: 15em;
+            width: 15em;
+            margin-right: 10px;
         }
         h1 {
             font-family: 'Great Vibes', cursive;
@@ -79,55 +76,52 @@
         .icon {
             margin-right: 5px;
         }
+        .unmute-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+        }
         @media (max-width: 1024px) {
-            video {
-                width: 100vw;
-                height: auto;
-            }
-            .heading-container img {
-                height: 2.5em;
+            img {
+                height: 7.5em;
+                width: 7.5em;
             }
             h1 {
                 font-size: 2.5em;
             }
         }
         @media (max-width: 768px) {
-            video {
-                width: 100vw;
-                height: auto;
-            }
             .content {
                 padding: 10px;
             }
-            .heading-container {
-                flex-direction: column;
-            }
-            .heading-container img {
-                height: 20em;
-                width: 20em;
+            img {
+                height: 10em;
+                width: 10em;
                 margin-bottom: 10px;
             }
             h1 {
-                font-size: 3.5em;
+                font-size: 2.5em;
             }
             p {
                 font-size: 14px;
             }
             p .name {
-                font-size: 2.5em;
+                font-size: 2em;
             }
         }
         @media (max-width: 480px) {
-            video {
-                width: 100vw;
-                height: auto;
-                object-fit: cover;
-            }
             .content {
                 padding: 5px;
             }
-            .heading-container img {
-                height: 1.5em;
+            img {
+                height: 4.5em;
+                width: 4.5em;
             }
             h1 {
                 font-size: 1.8em;
@@ -140,21 +134,19 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css">
 </head>
 <body>
     <div class="video-container">
-        <video id="bgVideo" autoplay loop playsinline>
-            <source src="media/haneershaweds.mp4" type="video/mp4">
+        <button class="unmute-button" onclick="unmuteVideo()">Unmute</button>
+        <video id="bgVideo" autoplay loop muted playsinline>
+            <source src="media/lv_0_20240714161227.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
     <div class="content">
         <div class="text">
-            <div class="heading-container">
-                <img src="media/H-removebg-preview.png" alt="Wedding logo">
-                <h1>Wedding Invitation</h1>
-            </div>
+            <img src="media/H__1_-removebg-preview.png" alt="Wedding logo">
+            <h1>Wedding Invitation</h1>
             <p>In the name of Allah, Most Gracious & Most Merciful<br><br>
                Mr. Kari Haneefa & Mrs. Sara Pandikasala <br>
                Harsha Villa, Manoor-Pookkunnu, Othukkungal Malappuram, Mob: 9497 348598 <br><br>
@@ -162,7 +154,7 @@
                <span class="name">Haneersha</span> <br>
                (Grand S/o Mr. Alavi Haji & Mrs. Fathima and Avarankutty Haji Pandikasala (Late) & Fathima (Late)) <br>
                <i>with</i> <br>
-               <span class="name">Sidhara Munthaha</span><br>
+               <span class="name">Sidhra Munthaha</span><br>
                D/o Mr. Sameer & Mrs. Rajeena, Moozhikkal House Mambaramba, PO Patterkadavu, Malappuram <br><br>
                <i class="bi bi-calendar icon"></i> Sunday, 11 August 2024 <br>
                <i class="bi bi-geo-alt icon"></i> Location: Green Palace Auditorium, Manoor Pookkunnu, Othukkungal <br>
@@ -176,27 +168,11 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        function unmuteVideo() {
             var video = document.getElementById('bgVideo');
             video.muted = false;
-            video.play().catch(function(error) {
-                console.error('Autoplay failed: ', error);
-                video.muted = true;
-                video.play();
-            });
-
-            function enableAutoplay() {
-                video.muted = false;
-                video.play().catch(function() {
-                    console.log('Autoplay failed');
-                });
-                document.removeEventListener('touchstart', enableAutoplay);
-                document.removeEventListener('click', enableAutoplay);
-            }
-
-            document.addEventListener('touchstart', enableAutoplay);
-            document.addEventListener('click', enableAutoplay);
-        });
+            video.play();
+        }
     </script>
 </body>
 </html>
