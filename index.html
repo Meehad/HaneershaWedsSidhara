@@ -143,7 +143,7 @@
             Your browser does not support the video tag.
         </video>
     </div>
-    <div class="content">
+    <div class="content" id="content">
         <div class="text">
             <img src="media/H__1_-removebg-preview.png" alt="Wedding logo">
             <h1>Wedding Invitation</h1>
@@ -173,6 +173,14 @@
             video.muted = false;
             video.play();
         }
+
+        var video = document.getElementById('bgVideo');
+        video.addEventListener('loadedmetadata', function() {
+            var duration = video.duration * 1000; // Convert to milliseconds
+            setTimeout(function() {
+                document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+            }, duration);
+        });
     </script>
 </body>
 </html>
