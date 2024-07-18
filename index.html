@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
+    <link rel="icon" href="media/H-_1_.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
-
         body, html {
             margin: 0;
             padding: 0;
@@ -42,16 +42,23 @@
             text-align: center;
             overflow-y: auto;
         }
-        .image {
+        .map-container {
+            position: relative;
             width: 100%;
-            height: auto;
+            height: 400px;
+            margin-top: 20px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         .text {
             margin-top: 20px;
         }
         img {
-            height: 15em;
-            width: 15em;
+            height: 20em;
+            width: 20em;
             margin-right: 10px;
         }
         h1 {
@@ -59,6 +66,10 @@
             font-size: 3em;
             color: #a0522d;
             margin: 0;
+            transition: text-shadow 0.3s ease-in-out;
+        }
+        h1:hover {
+            text-shadow: 2px 2px 8px #d18a60;
         }
         p {
             font-size: 1em;
@@ -69,11 +80,34 @@
             font-family: 'Alex Brush', cursive;
             font-size: 2em;
             color: #a0522d;
+            transition: text-shadow 0.3s ease-in-out;
+        }
+        p .name:hover {
+            text-shadow: 2px 2px 8px #d18a60;
         }
         p i {
             color: #a0522d;
         }
         .icon {
+            margin-right: 5px;
+        }
+        .icon-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #a0522d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+        .icon-button:hover {
+            background-color: #823d1a;
+        }
+        .icon-button i {
             margin-right: 5px;
         }
         .unmute-button {
@@ -87,10 +121,51 @@
             cursor: pointer;
             z-index: 2;
         }
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .countdown-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .countdown-heading {
+            font-size: 2em;
+            color: #a0522d;
+            margin-bottom: 10px;
+        }
+        .countdown {
+            font-size: 1.5em;
+            color: #a0522d;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .developer-credit {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f8f8f8;
+        font-size: 0.9em;
+        color: #666;
+    }
+    .developer-credit a {
+        color: #a0522d;
+        text-decoration: none;
+        font-weight: bold;
+    }
+        .developer-credit a:hover {
+            color: #d18a60;
+        }
+        .developer-credit i.bi-linkedin {
+        margin-left: 5px;
+    }
         @media (max-width: 1024px) {
             img {
-                height: 7.5em;
-                width: 7.5em;
+                height: 15em;
+                width: 15em;
             }
             h1 {
                 font-size: 2.5em;
@@ -101,8 +176,8 @@
                 padding: 10px;
             }
             img {
-                height: 10em;
-                width: 10em;
+                height: 12.5em;
+                width: 12.5em;
                 margin-bottom: 10px;
             }
             h1 {
@@ -120,8 +195,8 @@
                 padding: 5px;
             }
             img {
-                height: 4.5em;
-                width: 4.5em;
+                height: 10em;
+                width: 10em;
             }
             h1 {
                 font-size: 1.8em;
@@ -159,28 +234,85 @@
                <i class="bi bi-calendar icon"></i> Sunday, 11 August 2024 <br>
                <i class="bi bi-geo-alt icon"></i> Location: Green Palace Auditorium, Manoor Pookkunnu, Othukkungal <br>
                <i class="bi bi-clock icon"></i> Between 11:30 am & 2:00 pm<br><br>
-               With best compliments from: Harsha, Rabid, Hafeersha & Hafrasha
-            </p><br>
+               With best compliments from: Harsha, Rabid, Hafeersha & Hafrasha <br>
+            </p>
+            <div class="countdown-container">
+                <h2 class="countdown-heading">Countdown to Our Wedding</h2>
+                <div id="countdown" class="countdown"></div>
+            </div>
+            <div class="buttons-container">
+                <button class="icon-button" onclick="addToCalendar()">
+                    <i class="bi bi-calendar"></i> Save the Date
+                </button>
+                <button class="icon-button" onclick="location.href='media/HM.pdf';" download="HM.pdf">
+                    <i class="bi bi-download"></i> Download Invitation
+                </button>
+                <br>
+            </div>
         </div>
-        <a href="https://maps.app.goo.gl/dioiXeQsybB5WTyW7">
-            <img src="media/weddingloc.png" alt="Wedding Location Map" class="image">
-        </a>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.218215535876!2d76.0328619!3d11.022247900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba64bbce195b5a7%3A0xea3a5c8de6ef3804!2sGreen%20Palace%20Auditorium!5e0!3m2!1sen!2sin!4v1721181336714!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
-
+    <div class="developer-credit">
+        Developed by <a href="https://www.linkedin.com/in/mohammed-mihad/" target="_blank">Mohammed Meehad<i class="bi bi-linkedin"></i></a>
+    </div>
     <script>
         function unmuteVideo() {
             var video = document.getElementById('bgVideo');
-            video.muted = false;
-            video.play();
+            if (video.muted) {
+                video.muted = false;
+            } else {
+                video.muted = true;
+            }
         }
 
-        var video = document.getElementById('bgVideo');
-        video.addEventListener('loadedmetadata', function() {
-            var duration = video.duration * 1000; // Convert to milliseconds
-            setTimeout(function() {
-                document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
-            }, duration);
-        });
+        function addToCalendar() {
+            var event = {
+                title: 'Haneersha & Sidhrathul munthaha\'s Wedding',
+                location: 'Green Palace Auditorium, Manoor Pookkunnu, Othukkungal',
+                startTime: new Date('2024-08-11T11:30:00'),
+                endTime: new Date('2024-08-11T14:00:00')
+            };
+
+            var calendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE&text=' +
+                encodeURIComponent(event.title) +
+                '&dates=' + event.startTime.toISOString().replace(/-|:|\.\d+/g, '') +
+                '/' + event.endTime.toISOString().replace(/-|:|\.\d+/g, '') +
+                '&location=' + encodeURIComponent(event.location) +
+                '&pli=1&uid=&sf=true&output=xml';
+
+            window.open(calendarUrl, '_blank');
+        }
+
+        // Countdown Timer
+        function countdown() {
+            var now = new Date();
+            var eventDate = new Date('2024-08-11T11:30:00');
+            var currentTime = now.getTime();
+            var eventTime = eventDate.getTime();
+            var remTime = eventTime - currentTime;
+
+            var s = Math.floor(remTime / 1000);
+            var m = Math.floor(s / 60);
+            var h = Math.floor(m / 60);
+            var d = Math.floor(h / 24);
+
+            h %= 24;
+            m %= 60;
+            s %= 60;
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            document.getElementById("countdown").innerHTML =
+                d + " days " + h + " hours " + m + " minutes " + s + " seconds";
+
+            setTimeout(countdown, 1000);
+        }
+
+        countdown();
     </script>
 </body>
 </html>
