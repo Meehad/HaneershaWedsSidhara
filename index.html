@@ -267,12 +267,15 @@
             }
         }
 
+        var actionPerformed = false;
+        
         var video = document.getElementById('bgVideo');
-        video.addEventListener('loadedmetadata', function() {
-            var duration = video.duration * 1000; // Convert to milliseconds
-            setTimeout(function() {
+        
+        video.addEventListener('ended', function() {
+            if (!actionPerformed) {
                 document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
-            }, duration);
+            }
+            actionPerformed = true;
         });
 
         function addToCalendar() {
