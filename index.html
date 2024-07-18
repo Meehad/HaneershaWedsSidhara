@@ -267,6 +267,14 @@
             }
         }
 
+        var video = document.getElementById('bgVideo');
+        video.addEventListener('loadedmetadata', function() {
+            var duration = video.duration * 1000; // Convert to milliseconds
+            setTimeout(function() {
+                document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
+            }, duration);
+        });
+
         function addToCalendar() {
             var event = {
                 title: 'Haneersha & Sidhrathul munthaha\'s Wedding',
