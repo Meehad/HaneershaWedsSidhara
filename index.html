@@ -215,7 +215,7 @@
 <body>
     <div class="video-container">
         <button class="unmute-button" onclick="unmuteVideo()">Unmute</button>
-        <video id="bgVideo" autoplay loop muted playsinline>
+        <video id="bgVideo" autoplay muted playsinline>
             <source src="media/lv_0_20240714161227.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -269,15 +269,17 @@
             }
         }
 
-        var actionPerformed = false;
+        let isFirstIteration = true;
         
         var video = document.getElementById('bgVideo');
         
-        video.addEventListener('ended', function() {
-            if (!actionPerformed) {
+        video.addEventListener('ended', () => {
+            if (isFirstIteration) {
+                isFirstIteration = false;
                 document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
             }
-            actionPerformed = true;
+            video.currentTime = 0; // Restart the video manually
+            video.play(); // Play the video again
         });
 
         function addToCalendar() {
