@@ -41,6 +41,7 @@
             position: relative;
             text-align: center;
             overflow-y: auto;
+            overflow-x: hidden;
         }
         .image {
             width: 100%;
@@ -60,8 +61,6 @@
             color: #a0522d;
             margin: 0;
             transition: text-shadow 0.3s ease-in-out;
-        }
-        h1:hover {
             text-shadow: 2px 2px 8px #d18a60;
         }
         p {
@@ -74,12 +73,20 @@
             font-size: 2em;
             color: #a0522d;
             transition: text-shadow 0.3s ease-in-out;
-        }
-        p .name:hover {
             text-shadow: 2px 2px 8px #d18a60;
         }
         p i {
             color: #a0522d;
+        }
+        .text-content {
+            display: flex;
+            align-items: baseline;
+        }
+        .gif-content{
+            height: 100%;
+        }
+        .gif-content .img2 {
+            margin-top: 500px; 
         }
         .icon {
             margin-right: 5px;
@@ -137,119 +144,124 @@
             display: inline-block;
         }
         .developer-credit {
-        text-align: center;
-        margin-top: 20px;
-        padding: 10px;
-        background-color: #f8f8f8;
-        font-size: 0.9em;
-        color: #666;
-    }
-    .developer-credit a {
-        color: #a0522d;
-        text-decoration: none;
-        font-weight: bold;
-    }
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .developer-credit a {
+            color: #a0522d;
+            text-decoration: none;
+            font-weight: bold;
+        }
         .developer-credit a:hover {
             color: #d18a60;
         }
         .developer-credit i.bi-linkedin {
-        margin-left: 5px;
+            margin-left: 5px;
+        }
+@media only screen and (max-width: 768px) {
+    .text-content {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gif-content .img2 {
+            margin-top: 10px; /* Reduce space on mobile */
+        }
+
+        img {
+            height: 15em; /* Adjust size for mobile */
+            width: 15em;
+            margin-right: 0; /* Remove margin on mobile */
+        }
+
+    .text {
+        margin-top: 10px;
     }
-        @media (max-width: 1024px) {
-            img {
-                height: 15em;
-                width: 15em;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            .icon-button {
-                font-size: 13px;
-            }
-        }
-        @media (max-width: 768px) {
-            .content {
-                padding: 10px;
-            }
-            img {
-                height: 12.5em;
-                width: 12.5em;
-                margin-bottom: 10px;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            p {
-                font-size: 14px;
-            }
-            p .name {
-                font-size: 2em;
-            }
-            .icon-button {
-                font-size: 11.5px;
-            }
-        }
-        @media (max-width: 480px) {
-            .content {
-                padding: 5px;
-            }
-            img {
-                height: 10em;
-                width: 10em;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
-            p {
-                font-size: 12px;
-            }
-            p .name {
-                font-size: 1.2em;
-            }
-            .icon-button {
-                font-size: 9px;
-            }
-        }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    .img2 {
+        margin-top: 20px;
+    }
+
+    .countdown-heading {
+        font-size: 1.8em;
+    }
+
+    .countdown {
+        font-size: 1.2em;
+    }
+
+    .icon-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .image {
+        margin-top: 20px;
+    }
+}
+
     </style>
 </head>
 <body>
     <div class="video-container">
         <button class="unmute-button" onclick="unmuteVideo()">Unmute</button>
         <video id="bgVideo" autoplay muted playsinline>
-            <source src="media/lv_0_20240714161227.mp4" type="video/mp4">
+            <source src="media/Hashi_savedate.mov" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
     <div class="content" id="content">
-        <div class="text">
-            <img src="media/H__1_-removebg-preview.png" alt="Wedding logo">
-            <h1>Wedding Invitation</h1>
-            <p>In the name of Allah, Most Gracious & Most Merciful<br><br>
-               Mr. Kari Haneefa & Mrs. Sara Pandikasala <br>
-               Harsha Villa, Manoor-Pookkunnu, Othukkungal Malappuram, Mob: 9497 348598 <br><br>
-               We cordially invite your esteemed presence with family on the auspicious occasion of the marriage of our son <br>
-               <span class="name">Haneersha</span> <br>
-               (Grand S/o Mr. Alavi Haji & Mrs. Fathima and Avarankutty Haji Pandikasala (Late) & Fathima (Late)) <br>
-               <i>with</i> <br>
-               <span class="name">Sidhrathul munthaha</span><br>
-               D/o Mr. Sameer & Mrs. Rajeena, Moozhikkal House Mambaramba, PO Patterkadavu, Malappuram <br><br>
-               <i class="bi bi-calendar icon"></i> Sunday, 11 August 2024 <br>
-               <i class="bi bi-geo-alt icon"></i> Location: Green Palace Auditorium, Manoor Pookkunnu, Othukkungal <br>
-               <i class="bi bi-clock icon"></i> Between 11:30 am & 2:00 pm<br><br>
-               With best compliments from: Harsha, Rabid, Hafeersha & Hafrasha <br>
-            </p>
-            <div class="countdown-container">
-                <h2 class="countdown-heading">Countdown to Our Wedding</h2>
-                <div id="countdown" class="countdown"></div>
+        <div class="text-content">
+            <div class="gif-content">
+                <img src="media/clip-wedding-proposal.png" alt="gif">
+                <img class="img2" src="media/lettering-lettering-save-the-date-on-letter-text.gif" alt="">
             </div>
-            <div class="buttons-container">
-                <button class="icon-button" onclick="addToCalendar()">
-                    <i class="bi bi-calendar"></i> Save the Date
-                </button>
-                <button class="icon-button" onclick="location.href='media/HM.pdf';" download="HM.pdf">
-                    <i class="bi bi-download"></i> Download Invitation
-                </button>
-                <br>
+            <div class="text">
+                <img src="media/H__1_-removebg-preview.png" alt="Wedding logo">
+                <h1>Wedding Invitation</h1>
+                <p>In the name of Allah, Most Gracious & Most Merciful<br><br>
+                   Mr. Kari Haneefa & Mrs. Sara Pandikasala <br>
+                   Harsha Villa, Manoor-Pookkunnu, Othukkungal Malappuram, Mob: 9497 348598 <br><br>
+                   We cordially invite your esteemed presence with family on the auspicious occasion of the marriage of our son <br>
+                   <span class="name">Haneersha</span> <br>
+                   (Grand S/o Mr. Alavi Haji & Mrs. Fathima and Avarankutty Haji Pandikasala (Late) & Fathima (Late)) <br>
+                   <i>with</i> <br>
+                   <span class="name">Sidhrathul munthaha</span><br>
+                   D/o Mr. Sameer & Mrs. Rajeena, Moozhikkal House Mambaramba, PO Patterkadavu, Malappuram <br><br>
+                   <i class="bi bi-calendar icon"></i> Sunday, 11 August 2024 <br>
+                   <i class="bi bi-geo-alt icon"></i> Location: Green Palace Auditorium, Manoor Pookkunnu, Othukkungal <br>
+                   <i class="bi bi-clock icon"></i> Between 11:30 am & 2:00 pm<br><br>
+                   With best compliments from: Harsha, Rabid, Hafeersha & Hafrasha <br>
+                </p>
+                <div class="countdown-container">
+                    <h2 class="countdown-heading">Countdown to Our Wedding</h2>
+                    <div id="countdown" class="countdown"></div>
+                </div>
+                <div class="buttons-container">
+                    <button class="icon-button" onclick="addToCalendar()">
+                        <i class="bi bi-calendar"></i> Save the Date
+                    </button>
+                    <button class="icon-button" onclick="location.href='media/HM.pdf';" download="HM.pdf">
+                        <i class="bi bi-download"></i> Download Invitation
+                    </button>
+                    <br>
+                </div>
+            </div>
+            <div class="gif-content">
+                <img src="media/3d-casual-life-present-with-balloon.gif" alt="gif">
+                <img class="img2" src="media/3d-casual-life-party-popper-with-confetti.png" alt="gif">
             </div>
         </div>
         <a href="https://maps.app.goo.gl/dioiXeQsybB5WTyW7">
